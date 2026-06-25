@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecnoIsekai | Arquitectura de Grandes Modelos de Lenguaje</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    <a href="#contenido-principal" class="enlace-salto">Saltar al contenido principal</a>
+
+    <header class="barra-superior">
+        <div class="contenedor-navegacion">
+            <a href="#inicio" class="logotipo">Tecno<span>Isekai</span></a>
+            
+            <nav class="menu-principal" aria-label="Navegación principal de la revista">
+                <ul>
+                    <li><a href="#inicio" class="opcion-menu">Inicio</a></li>
+                    <li><a href="#arquitectura" class="opcion-menu">Transformers</a></li>
+                    <li><a href="#mecanismo-atencion" class="opcion-menu">Atención</a></li>
+                    <li><a href="#entrenamiento" class="opcion-menu">Alineación</a></li>
+                    <li><a href="#contexto-inferencia" class="opcion-menu">Inferencia</a></li>
+                </ul>
+            </nav>
+            
+            <div class="botones-encabezado">
+                <button id="theme-toggle" class="boton-tema" aria-label="Alternar contraste de interfaz">🌓</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="contenido-principal" class="contenedor-principal">
+        
+        <header id="inicio" class="seccion-presentacion">
+            <div class="bloque-presentacion">
+                <span class="etiqueta-categoria">Análisis e Ingeniería de Software</span>
+                <h1>La Revolución Matemática Detrás de los Modelos de Chat</h1>
+                <p>Un desglose técnico exhaustivo sobre el funcionamiento interno de los LLMs autorregresivos: desde la tokenización hasta el cómputo tensorial en la arquitectura Transformer.</p>
+                <div class="datos-autor">
+                    <span>Por: <strong>Antony Hernandez</strong></span>
+                    <time datetime="2026-06-25">25 de Junio, 2026</time>
+                </div>
+            </div>
+        </header>
+
+        <div class="distribucion-bloques">
+            
+            <div class="columna-izquierda">
+                
+                <section id="arquitectura" class="bloque-teoria">
+                    <h2>1. Paradigma Vectorial y Arquitectura Transformer</h2>
+                    <p>Los interfaces de chat basados en Inteligencia Artificial no procesan cadenas de texto de forma literal. Operan mediante el procesamiento estadístico y algebraico de vectores en espacios latentes de alta dimensionalidad.</p>
+                    
+                    <div class="cuadro-destacado">
+                        <h3>El Proceso Crucial de Tokenización</h3>
+                        <p>Cada entrada de texto (*prompt*) es procesada inicialmente por un algoritmo de tokenización (como <em>Byte-Pair Encoding</em> o BPE). Este descompone el flujo de caracteres en unidades discretas llamadas <strong>tokens</strong>. Cada token es mapeado a un identificador numérico entero dentro del vocabulario predefinido del modelo.</p>
+                        
+                        <blockquote>
+                            <strong>Nota de Ingeniería:</strong> Un modelo con un vocabulario de 32,000 tokens asocia cada fragmento con un vector único mediante una capa de <em>Embedding</em>, asignándole coordenadas matemáticas que representan sus propiedades semánticas y sintácticas.
+                        </blockquote>
+                    </div>
+                </section>
+
+                <section id="mecanismo-atencion" class="bloque-teoria">
+                    <h2>2. El Mecanismo de Atención Propia (Self-Attention)</h2>
+                    <p>La gran innovación de la arquitectura Transformer es la capacidad de evaluar la relación de cada palabra con todas las demás dentro de una misma secuencia, sin importar la distancia jerárquica o física que las separe.</p>
+                    
+                    <figure class="grafico-articulo">
+                        <div class="matriz-simulada" aria-hidden="true">
+                            <div class="fila-matriz"><span>1.0</span><span>0.2</span><span>0.1</span></div>
+                            <div class="fila-matriz"><span>0.1</span><span>0.9</span><span>0.3</span></div>
+                            <div class="fila-matriz"><span>0.0</span><span>0.2</span><span>0.8</span></div>
+                        </div>
+                        <figcaption>Figura 1: Representación abstracta de la Matriz de Atención Cruzada calculando pesos probabilísticos entre tokens.</figcaption>
+                    </figure>
+
+                    <p>A través de las proyecciones lineales de matrices denominadas <strong>Query (Q)</strong>, <strong>Key (K)</strong> y <strong>Value (V)</strong>, el sistema calcula un producto escalar para determinar cuánta "atención" debe prestar un token a otro durante la inferencia. Esto mitiga la pérdida de memoria secuencial que sufrían las redes neuronales recurrentes antiguas (RNN).</p>
+                </section>
+
+                <section id="entrenamiento" class="bloque-teoria">
+                    <h2>3. El Ciclo de Vida del Entrenamiento: De Base a Chat</h2>
+                    <p>Para que un modelo actúe eficazmente como un interlocutor en formato conversacional en lugar de un mero completador de frases, es imperativo someterlo a un pipeline de optimización estructurado en tres etapas:</p>
+                    
+                    <div class="tarjetas-pasos">
+                        <div class="tarjeta-paso">
+                            <span class="numero-paso">01</span>
+                            <h4>Preentrenamiento</h4>
+                            <p>Cómputo masivo autorregresivo no supervisado. El modelo predice el siguiente token basándose en miles de millones de parámetros textuales, absorbiendo la gramática del mundo real.</p>
+                        </div>
+                        <div class="tarjeta-paso">
+                            <span class="numero-paso">02</span>
+                            <h4>Ajuste Fino Supervisado (SFT)</h4>
+                            <p>Se reentrena al modelo utilizando conjuntos de datos compuestos estrictamente por pares de instrucciones de entrada y respuestas ideales redactadas por expertos humanos.</p>
+                        </div>
+                        <div class="tarjeta-paso">
+                            <span class="numero-paso">03</span>
+                            <h4>Alineación por Preferencia (RLHF/DPO)</h4>
+                            <p>Se aplican optimizaciones basadas en recompensas para calibrar la seguridad, consistencia y tono del sistema,inihiendo alucinaciones severas.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contexto-inferencia" class="bloque-teoria">
+                    <h2>4. Dinámica de Inferencia y Gestión del Estado de Chat</h2>
+                    <p>A diferencia de los sistemas de software tradicionales que mantienen una sesión de estado persistente, los LLM son inherentemente **sin estado** (*stateless*). Cada consulta enviada a la API es una petición aislada.</p>
+                    
+                    <div class="alerta-resumen">
+                        <p><strong>¿Cómo recuerda el hilo de la conversación?</strong> La interfaz cliente concatena recursivamente el historial completo acumulado. Si una conversación lleva 4 interacciones, el archivo enviado contiene el Prompt 1 + Respuesta 1 + Prompt 2 + Respuesta 2 + Prompt 3. Esto llena progresivamente la <strong>Ventana de Contexto</strong> del hardware, incrementando el costo de atención.</p>
+                    </div>
+                </section>
+
+            </div>
+
+            <aside class="columna-derecha">
+                <section class="tarjeta-lateral informacion-lateral">
+                    <h3>Glosario Técnico</h3>
+                    <ul class="lista-glosario">
+                        <li><strong>Token:</strong> Fragmento mínimo de procesamiento de texto (aprox. 4 caracteres).</li>
+                        <li><strong>Inferencia:</strong> Fase donde el modelo ya entrenado genera respuestas en tiempo real.</li>
+                        <li><strong>RLHF:</strong> Aprendizaje por refuerzo a través de comentarios humanos.</li>
+                    </ul>
+                </section>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <div class="contenedor-pie">
+            <p>&copy; 2026 TecnoIsekai - Antony Hernandez</p>
+            <p>Proyecto de desarrollo web utilizando semántica HTML5 estricta.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
